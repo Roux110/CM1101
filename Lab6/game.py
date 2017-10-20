@@ -359,11 +359,16 @@ def move(exits, direction):
 # This is the entry point of our program
 def main():
 
+
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
         print_room(current_room)
         print_inventory_items(inventory)
+        if current_room["name"] == "Reception":
+            if len(current_room["items"]) == 6:
+                print("CONGRATULATIONS, YOU'VE WON.")
+                break
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)
